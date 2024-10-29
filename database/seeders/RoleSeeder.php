@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Enums\Role as RoleEnum;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,11 @@ final class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::factory(10)->create();
+        foreach (RoleEnum::cases() as $role) {
+            Role::create([
+                'name' => ucfirst($role->value),
+                'key' => $role->value,
+            ]);
+        }
     }
 }

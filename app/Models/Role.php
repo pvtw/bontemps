@@ -13,6 +13,11 @@ final class Role extends Model
     /** @use HasFactory<\Database\Factories\RoleFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'key',
+    ];
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class)->using(RoleUser::class)->withTimestamps();
