@@ -26,8 +26,8 @@ return new class () extends Migration {
 
         Schema::create('ingredient_recipe', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('ingredient_id')->references('id')->on('ingredients');
-            $table->foreignId('recipe_id')->references('id')->on('recipes');
+            $table->foreignId('ingredient_id')->references('id')->on('ingredients')->cascadeOnDelete();
+            $table->foreignId('recipe_id')->references('id')->on('recipes')->cascadeOnDelete();
             $table->string('unit');
             $table->unsignedBigInteger('quantity');
             $table->timestamps();
@@ -41,8 +41,8 @@ return new class () extends Migration {
 
         Schema::create('menu_recipe', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('menu_id')->references('id')->on('menus');
-            $table->foreignId('recipe_id')->references('id')->on('recipes');
+            $table->foreignId('menu_id')->references('id')->on('menus')->cascadeOnDelete();
+            $table->foreignId('recipe_id')->references('id')->on('recipes')->cascadeOnDelete();
             $table->timestamps();
         });
     }
