@@ -12,6 +12,10 @@ final class Ingredient extends Model
     /** @use HasFactory<\Database\Factories\IngredientFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+    ];
+
     public function recipes()
     {
         return $this
