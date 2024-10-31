@@ -11,21 +11,21 @@
                 <x-link href="{{ route('ingredients.create') }}">Create ingredient</x-link>
             </div>
 
-            <table class="w-full mt-4 dark:text-white">
-                <thead class="font-bold">
-                    <tr>
-                        <td class="p-2">{{ __('ID') }}</td>
-                        <td class="w-full p-2">{{ __('Name') }}</td>
-                        <td class="p-2">{{ __('Actions') }}</td>
+            <table class="w-full table-auto divide-y divide-gray-200 text-start text-black dark:text-white dark:divide-white/5 mt-4">
+                <thead class="divide-y divide-gray-200 dark:divide-white/5">
+                    <tr class="bg-gray-50 dark:bg-white/5">
+                        <th class="px-3 py-3.5 sm:first-of-type:ps-6 sm:last-of-type:pe-6">{{ __('ID') }}</th>
+                        <th class="px-3 py-3.5 sm:first-of-type:ps-6 sm:last-of-type:pe-6 w-full">{{ __('Name') }}</th>
+                        <th class="px-3 py-3.5 sm:first-of-type:ps-6 sm:last-of-type:pe-6">{{ __('Actions') }}</th>
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody class="divide-y divide-gray-200 whitespace-nowrap dark:divide-white/5">
                     @forelse ($ingredients as $ingredient)
-                        <tr>
-                            <td class="p-2">{{ $ingredient->id }}</td>
-                            <td class="p-2">{{ $ingredient->name }}</td>
-                            <td class="p-2">
+                        <tr class="[@media(hover:hover)]:transition [@media(hover:hover)]:duration-75 hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-0 first-of-type:ps-1 last-of-type:pe-1 sm:first-of-type:ps-3 sm:last-of-type:pe-3">{{ $ingredient->id }}</td>
+                            <td class="p-0 first-of-type:ps-1 last-of-type:pe-1 sm:first-of-type:ps-3 sm:last-of-type:pe-3">{{ $ingredient->name }}</td>
+                            <td class="p-0 first-of-type:ps-1 last-of-type:pe-1 sm:first-of-type:ps-3 sm:last-of-type:pe-3">
                                 <span class="flex items-center gap-4">
                                     <x-link href="{{ route('ingredients.edit', $ingredient) }}">Edit</x-link>
                                     <form method="post" action="{{ route('ingredients.destroy', $ingredient) }}">
