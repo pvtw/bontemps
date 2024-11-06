@@ -17,7 +17,9 @@ final class EnsureUserHasRole
      */
     public function handle(Request $request, Closure $next, string $role): Response
     {
-        abort_if($request->user()?->roles()->where('key', $role), 403);
+        $key = mb_strtoupper($role);
+
+        abort_if($request->user()?->roles()->where('key', $key)->isEmpty() ?? true, 403);
 
         return $next($request);
     }
